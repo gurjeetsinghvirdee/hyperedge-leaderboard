@@ -127,17 +127,13 @@ export default function BasicTable() {
   }
 
   useEffect(() => {
-    fetch("https://hyperedgesoc23-backend.vercel.app/").then(res => res.json()).then(data => {
-      data.leaderboard.sort(function (a, b) {
-        return b.score - a.score || b.level4 - a.level4 || b.level3 - a.level3 || b.level2 - a.level2 || b.level1 - a.level1 || b.level0 - a.level0 || a.login < b.login 
-      });
-
-      setLeaderss(data.leaderboard);
-      setOpenn(false);
-
-      setLastupdated(data.updatedTimeString);
-    })
-  }, []);
+    fetch("https://localhost:3000/OSLeaderboard").then(res => res.json()).then(data => {
+        data.leaderboard.sort(function (a, b) { return b.score - a.score || b.level4 - a.level4 || b.level3 - a.level3 || b.level2 - a.level2 || b.level1 - a.level1 || b.level0 - a.level0 || a.login < b.login });
+        setLeaderss(data.leaderboard);
+        setOpenn(false);
+        setLastupdated(data.updatedTimestring);
+    });
+}, []);
 
   for (let leader in leaderss) {
     rows.push(createData([leaderss[leader].login, leaderss[leader].url], leaderss[leader].pr_urls.filter((item, i, ar) => ar.indexOf(item) === i).length, leaderss[leader].score, leaderss[leader].profile_url, leaderss[leader].pr_urls, leaderss[leader].Level0, leaderss[leader].Level1, leaderss[leader].Level2, leaderss[leader].Level3))
@@ -249,7 +245,7 @@ export default function BasicTable() {
         <Dialog
           open={open}
           onClose={handleClose}
-          aria-lablelledby="alert-dialog-slide-title"
+          aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle id="alert-dialog-slide-title">{login + "'s Stats"}</DialogTitle>
