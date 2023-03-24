@@ -1,6 +1,22 @@
-import { AppBar, Avatar, Backdrop, CircularProgress, Dialog, DialogContent, DialogContentText, DialogTitle, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, makeStyles, withStyles } from '@material-ui/core';
-import GitHubIcon from '@material-ui/icons/GitHub';
 import React, { useState, useEffect } from 'react';
+import { makeStyles, withStyles } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import AppBar from '@material-ui/core/AppBar';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import Avatar from '@material-ui/core/Avatar';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Confetti from 'react-confetti';
 
 const columns = [
@@ -127,7 +143,7 @@ export default function BasicTable() {
   }
 
   useEffect(() => {
-    fetch("https://localhost:3000/OSLeaderboard").then(res => res.json()).then(data => {
+    fetch("http://localhost:3000/OSLeaderboard").then(res => res.json()).then(data => {
         data.leaderboard.sort(function (a, b) { return b.score - a.score || b.level4 - a.level4 || b.level3 - a.level3 || b.level2 - a.level2 || b.level1 - a.level1 || b.level0 - a.level0 || a.login < b.login });
         setLeaderss(data.leaderboard);
         setOpenn(false);
@@ -149,12 +165,12 @@ export default function BasicTable() {
     let unique = prlinks.filter((item, i, ar) => ar.indexOf(item) === i);
     setLinks(unique)
     setLeveldata({
-      Level0: leaderss[num].Level0,
-      Level1: leaderss[num].Level1,
-      Level2: leaderss[num].Level2,
-      Level3: leaderss[num].Level3,
+      level0: leaderss[num].level0,
+      level1: leaderss[num].level1,
+      level2: leaderss[num].level2,
+      level3: leaderss[num].level3,
     });
-    setAvatar(leaderss[num].login);
+    setLogin(leaderss[num].login);
     setAvatar(leaderss[num].avatar_url);
     setScore(leaderss[num].score);
   };
@@ -184,17 +200,14 @@ export default function BasicTable() {
             <img src={rows[1] !== undefined ? rows[1].avatar : null} className={classes.leaderimg} />
             <h3>2. {rows[1] !== undefined ? rows[1].username[0] : null}</h3>
           </div>
-
           <div style={{ textAlign: "center" }}>
-            <img src={rows[1] !== undefined ? rows[0].avatar : null} className={classes.leaderimgbig} />
-            <h3>1. {rows[1] !== undefined ? rows[0].username[0] : null}</h3>
+              <img src={rows[1] !== undefined ? rows[0].avatar : null} className={classes.leaderimgbig} />
+              <h3>1. {rows[1] !== undefined ? rows[0].username[0] : null}</h3>
           </div>
-
           <div>
-            <img src={rows[1] !== undefined ? rows[2].avatar : null} className={classes.leaderimg} />
-            <h3>3. {rows[1] !== undefined ? rows[2].username[0] : null}</h3>
+              <img src={rows[1] !== undefined ? rows[2].avatar : null} className={classes.leaderimg} />
+              <h3>3. {rows[1] !== undefined ? rows[2].username[0] : null}</h3>
           </div>
-
         </div>
 
         <div style={{ backgroundColor: "#E5F6FD", padding: 5, borderRadius: 5 }}>
@@ -230,7 +243,7 @@ export default function BasicTable() {
                         const value = row[column.id];
                         return (
                           <StyledTableCell key={column.id} align={column.align} onClick={() => {handleClickOpen(rows.indexOf(row)); }}>
-                            {column.id === 'avatar' ? <Avatar alt='' src={value} >T</Avatar> : column.id === 'position' ? rows.indexOf(row) + 1 : column.id === 'username' ? <div style={{ display: "flex", alignItems: "center" }}><GitHubIcon style={{ marginRight: 20 }} /><a href={value[1]} style={{ textDecoration: "none", color: "black" }}>{value[0]}</a></div> : value}
+                            {column.id === 'avatar' ? <Avatar alt='' src={value} ></Avatar> : column.id === 'position' ? rows.indexOf(row) + 1 : column.id === 'username' ? <div style={{ display: "flex", alignItems: "center" }}><GitHubIcon style={{ marginRight: 20 }} /><a href={value[1]} style={{ textDecoration: "none", color: "black" }}>{value[0]}</a></div> : value}
                           </StyledTableCell>
                         );
                       })}
@@ -248,17 +261,22 @@ export default function BasicTable() {
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
         >
-          <DialogTitle id="alert-dialog-slide-title">{login + "'s Stats"}</DialogTitle>
+          <DialogTitle id="alert-dialog-slide-title">{login + "Stats"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
               <div style={{ display: "flex", alignItems: "center" }}>
                 <img alt="Remy Sharp" src={avatar} className={classes.leaderimg} />
                 <p className={classes.levelbadge} style={{ backgroundColor: "#ebfaeb", marginLeft: 20, fontSize: 25 }}>🏆 {score}</p>
               </div>
-
+              <p style={{ "marginTop": 30 }}>List Of PRs:</p>
+              {links}
             </DialogContentText>
           </DialogContent>
-
+          <DialogActions>
+            <button onClick={handleClose} color='primary' style={{ backgroundColor: "#FA6329", border: "none", padding: 15, color: "white", borderRadius: 5, cursor: "pointer", marginRight: 10 }}>
+              Close
+            </button>
+          </DialogActions>
         </Dialog>
       </div>
     </div>
