@@ -20,7 +20,7 @@ import AppBar  from '@material-ui/core/AppBar';
 import Confetti from 'react-confetti';
 
 const columns = [
-    { id: 'position', label: 'Position', minWidth: 50 },
+    { id: 'position', label: 'Position', minWidth: 50, align: 'center' },
     { id: 'avatar', label: 'Avatar', minWidth: 100 },
     { id: 'username', label: 'Username', minWidth: 170 },
 
@@ -28,13 +28,13 @@ const columns = [
         id: 'prnums',
         label: 'No. Of PRs',
         minWidth: 170,
-        align: 'right'
+        align: 'center'
     },
     {
         id: 'score',
         label: 'Score',
         minWidth: 170,
-        align: 'right'
+        align: 'center'
     }
 ];
 
@@ -135,7 +135,7 @@ function Leaderboard() {
         return { username, avatar, prnums, score, prlinks, level0, level1, level2, level3, level4 };
     }
     useEffect(() => {
-        fetch("http://localhost:3000/OSLeaderboard").then(res => res.json()).then(data => {
+        fetch("http://localhost:8000/Leaderboard").then(res => res.json()).then(data => {
             data.leaderboard.sort(function (a, b) { return b.score - a.score || b.level4 - a.level4 || b.level3 - a.level3 || b.level2 - a.level2 || b.level1 - a.level1 || b.level0 - a.level0 || a.login < b.login });
             setLeaderss(data.leaderboard);
             setOpenn(false);
