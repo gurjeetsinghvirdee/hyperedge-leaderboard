@@ -135,7 +135,7 @@ function Leaderboard() {
         return { username, avatar, prnums, score, prlinks, level0, level1, level2, level3, level4 };
     }
     useEffect(() => {
-        fetch("https://backend-api-rdoo.onrender.com/Leaderboard").then(res => res.json()).then(data => {
+        fetch("https://hyperedgesoc23-backend-production.up.railway.app/Leaderboard").then(res => res.json()).then(data => {
             data.leaderboard.sort(function (a, b) { return b.score - a.score || b.level4 - a.level4 || b.level3 - a.level3 || b.level2 - a.level2 || b.level1 - a.level1 || b.level0 - a.level0 || a.login < b.login });
             setLeaderss(data.leaderboard);
             setOpenn(false);
