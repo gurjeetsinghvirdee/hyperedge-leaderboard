@@ -171,7 +171,9 @@ function Leaderboard() {
         <>
             <div>
               <AppBar position='static' className={classes.appbar}>
-                <img src="https://hyperedge.so/_next/image?url=%2Fimages%2Flogo.png&w=96&q=75" style={{ width: 100, height: "auto", marginTop: 5, marginRight: 30}} />
+                <a href="https://hyperedge.so/wob">
+                    <img src="https://hyperedge.so/_next/image?url=%2Fimages%2Flogo.png&w=96&q=75" style={{ width: 100, height: "auto", marginTop: 5, marginRight: 30}} />
+                </a>
                 <h2>HyperEdge Winter of BlockChain Leaderboard </h2>
               </AppBar>
               <Confetti 
