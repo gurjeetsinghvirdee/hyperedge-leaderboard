@@ -114,6 +114,10 @@ html {
     margin: 0 2vw;
 }
 
+.table-cell {
+    vertical-align: middle;
+}
+
 .loader {
     height: 4rem !important;
     width: 4rem !important;
