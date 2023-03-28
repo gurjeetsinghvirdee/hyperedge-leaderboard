@@ -18,6 +18,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AppBar  from '@material-ui/core/AppBar'; 
 import Confetti from 'react-confetti';
+import { Spinner } from '@chakra-ui/react';
 
 const columns = [
     { id: 'position', label: 'Position', minWidth: 50, align: 'center' },
@@ -128,6 +129,9 @@ function Leaderboard() {
     let [login, setLogin] = useState("");
     let [score, setScore] = useState("");
     let [avatar, setAvatar] = useState("");
+    let [isLoading, setIsLoading] = useState("");
+    let [loadingMsg, setLoadingMsg] = useState("");
+    let [showConfetti, setShowConfetti] = useState("");
     let [lastupdated, setLastupdated] = useState("");
     const [openn, setOpenn] = React.useState(true);
     let rows = [];
@@ -274,7 +278,46 @@ function Leaderboard() {
     // );
 
     return (
-        
+        <>
+          <header position='static' className={classes.header}>
+            <a href="https://hyperedge.so/wob">
+                <img src="https://hyperedge.so/_next/image?url=%2Fimages%2Flogo.png&w=96&q=75" style={{ width: 100, height: "auto", marginLeft: 570, marginTop: 20 }} />
+            </a>
+          </header>
+          {isLoading && (
+            <div className='loader-div'>
+                <div className='overlay dark:bg-darkmode_gray-0'></div>
+                <div className='loader-group-container'>
+                    <div className='loader-group dark:bg-black'>
+                        <Spinner
+                            className='loader'
+                            thickness='6px'
+                            speed='0.7s'
+                            emptyColor='gray.200'
+                            color='red.400'
+                            size="xl"
+                        />
+                        <span className='loading-msg dark:text-white'>{loadingMsg}</span>
+                    </div>
+                </div>
+            </div>
+          )}
+          {showConfetti && <Confetti className='fullscreen' />}
+          <div
+            className='container transition:colors mt-12 mb-0 md:mb-12 p-8 sm:px-10 md:px-10 lg:px-20 2xl:px-32 dark:bg-darkmode_gray-0 dark:transition-colors'
+            style={{ margin: "auto" }}
+          >
+            <div className='items-center justify-center'>
+                <div className='font-sans text-center text-2x1 font-extrabold'>
+                    <div className='text-black dark:text-white text-4xl text center font-extrabold mb-10 underline underline-offset-4 decoration-primary_red-1'>
+                        <span className='text-primary_red-0' style={{ display: "block" }}> HyperEdge WOB 2023 Leaderboard</span>
+                        Top Performers
+                    </div>
+                    
+                </div>
+            </div>
+          </div>
+        </>
     )
 }
 
