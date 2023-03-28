@@ -167,111 +167,115 @@ function Leaderboard() {
         prlinks = []
         setOpen(false);
     };
+    // return (
+    //     <>
+    //         <div>
+    //           <AppBar position='static' className={classes.appbar}>
+    //             <a href="https://hyperedge.so/wob">
+    //                 <img src="https://hyperedge.so/_next/image?url=%2Fimages%2Flogo.png&w=96&q=75" style={{ width: 100, height: "auto", marginTop: 5, marginRight: 30}} />
+    //             </a>
+    //             <h2>HyperEdge Winter of BlockChain Leaderboard </h2>
+    //           </AppBar>
+    //           <Confetti 
+    //             width={window.innerWidth}
+    //             height={window.innerHeight}
+    //             numberOfPieces={60}
+    //           />
+    //             <Backdrop className={classes.backdrop} open={openn}>
+    //                 <CircularProgress color="inherit" />
+    //             </Backdrop>
+    //             <div style={{}} className={classes.mainroot}>
+    //                 <div style={{ marginBottom: 40, marginTop: 60, alignItems: "center", display: "flex", justifyContent: "space-between" }} className={classes.leaders}>
+
+    //                     <div>
+    //                         <img src={rows[1] !== undefined ? rows[1].avatar : null} className={classes.leaderimg} />
+    //                         <h3>2. {rows[1] !== undefined ? rows[1].username[0] : null}</h3>
+
+    //                     </div>
+    //                     <div style={{ textAlign: "center" }}>
+    //                         <img src={rows[1] !== undefined ? rows[0].avatar : null} className={classes.leaderimgbig} />
+    //                         <h3>1. {rows[1] !== undefined ? rows[0].username[0] : null}</h3>
+    //                     </div>
+    //                     <div>
+    //                         <img src={rows[1] !== undefined ? rows[2].avatar : null} className={classes.leaderimg} />
+    //                         <h3>3. {rows[1] !== undefined ? rows[2].username[0] : null}</h3>
+    //                     </div>
+
+    //                 </div>
+
+    //                 <div style={{ backgroundColor: "#E5F6FD", padding: 5, borderRadius: 5 }}>
+    //                     <p style={{ color: "#024361", fontSize: 15 }}>The leaderboard was last updated on: <b>{lastupdated}</b></p>
+    //                 </div>
+
+    //                 <Paper>
+    //                     <TableContainer component={Paper}>
+    //                         <Table className={classes.table} aria-label="simple table">
+    //                             <TableHead>
+    //                                 <StyledTableRow>
+    //                                     {columns.map((column) => (
+    //                                         <StyledTableCell
+    //                                             key={column.id}
+    //                                             align={column.align}
+    //                                             style={{ minWidth: column.minWidth }}
+    //                                         >
+    //                                             {column.label}
+    //                                         </StyledTableCell>
+    //                                     ))}
+    //                                 </StyledTableRow>
+    //                             </TableHead>
+    //                             <TableBody>
+    //                                 {rows.map((row) => {
+    //                                     return (
+    //                                         // style = {{ display: rows.indexOf(row) === 0 || rows.indexOf(row) === 1 || rows.indexOf(row) === 2 ? "none" : null }
+    //                                         <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.username}  >
+    //                                             {columns.map((column) => {
+    //                                                 const value = row[column.id];
+    //                                                 return (
+    //                                                     <StyledTableCell key={column.id} align={column.align} onClick={() => { handleClickOpen(rows.indexOf(row)); }}>
+    //                                                         {column.id === 'avatar' ? <Avatar alt="Remy Sharp" src={value} /> : column.id === 'position' ? rows.indexOf(row) + 1 : column.id === 'username' ? <div style={{ display: "flex", alignItems: "center" }}><GitHubIcon style={{ marginRight: 20 }} /><a href={value[1]} style={{ textDecoration: "none", color: "black" }}>{value[0]}</a></div> : value}
+
+    //                                                     </StyledTableCell>
+    //                                                 );
+
+    //                                             })}
+    //                                         </StyledTableRow>
+    //                                     );
+    //                                 })}
+    //                             </TableBody>
+    //                         </Table>
+    //                     </TableContainer>
+    //                 </Paper>
+    //                 <Dialog
+    //                     open={open}
+    //                     onClose={handleClose}
+    //                     aria-labelledby="alert-dialog-slide-title"
+    //                     aria-describedby="alert-dialog-slide-description"
+    //                 >
+    //                     <DialogTitle id="alert-dialog-slide-title">{login + "'s Stats"}</DialogTitle>
+    //                     <DialogContent>
+    //                         <DialogContentText id="alert-dialog-slide-description">
+    //                             <div style={{ display: "flex", alignItems: "center" }}>
+    //                                 <img alt="Remy Sharp" src={avatar} className={classes.leaderimg} />
+    //                                 <p className={classes.levelbadge} style={{ backgroundColor: "#ebfaeb", marginLeft: 20, fontSize: 25 }}>🏆 {score}</p>
+    //                             </div>
+    //                             <p style={{ "marginTop": 30 }}>List Of PRs: </p>
+    //                             {links}
+    //                         </DialogContentText>
+    //                     </DialogContent>
+    //                     <DialogActions>
+    //                         <button onClick={handleClose} color="primary" style={{ background: "#FA6329", border: "none", padding: 15, color: "white", borderRadius: 5, cursor: "pointer", marginRight: 10 }}>
+    //                             Close
+    //                         </button>
+    //                     </DialogActions>
+    //                 </Dialog>
+    //             </div>
+    //         </div >
+    //     </>
+    // );
+
     return (
-        <>
-            <div>
-              <AppBar position='static' className={classes.appbar}>
-                <a href="https://hyperedge.so/wob">
-                    <img src="https://hyperedge.so/_next/image?url=%2Fimages%2Flogo.png&w=96&q=75" style={{ width: 100, height: "auto", marginTop: 5, marginRight: 30}} />
-                </a>
-                <h2>HyperEdge Winter of BlockChain Leaderboard </h2>
-              </AppBar>
-              <Confetti 
-                width={window.innerWidth}
-                height={window.innerHeight}
-                numberOfPieces={60}
-              />
-                <Backdrop className={classes.backdrop} open={openn}>
-                    <CircularProgress color="inherit" />
-                </Backdrop>
-                <div style={{}} className={classes.mainroot}>
-                    <div style={{ marginBottom: 40, marginTop: 60, alignItems: "center", display: "flex", justifyContent: "space-between" }} className={classes.leaders}>
-
-                        <div>
-                            <img src={rows[1] !== undefined ? rows[1].avatar : null} className={classes.leaderimg} />
-                            <h3>2. {rows[1] !== undefined ? rows[1].username[0] : null}</h3>
-
-                        </div>
-                        <div style={{ textAlign: "center" }}>
-                            <img src={rows[1] !== undefined ? rows[0].avatar : null} className={classes.leaderimgbig} />
-                            <h3>1. {rows[1] !== undefined ? rows[0].username[0] : null}</h3>
-                        </div>
-                        <div>
-                            <img src={rows[1] !== undefined ? rows[2].avatar : null} className={classes.leaderimg} />
-                            <h3>3. {rows[1] !== undefined ? rows[2].username[0] : null}</h3>
-                        </div>
-
-                    </div>
-
-                    <div style={{ backgroundColor: "#E5F6FD", padding: 5, borderRadius: 5 }}>
-                        <p style={{ color: "#024361", fontSize: 15 }}>The leaderboard was last updated on: <b>{lastupdated}</b></p>
-                    </div>
-
-                    <Paper>
-                        <TableContainer component={Paper}>
-                            <Table className={classes.table} aria-label="simple table">
-                                <TableHead>
-                                    <StyledTableRow>
-                                        {columns.map((column) => (
-                                            <StyledTableCell
-                                                key={column.id}
-                                                align={column.align}
-                                                style={{ minWidth: column.minWidth }}
-                                            >
-                                                {column.label}
-                                            </StyledTableCell>
-                                        ))}
-                                    </StyledTableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {rows.map((row) => {
-                                        return (
-                                            // style = {{ display: rows.indexOf(row) === 0 || rows.indexOf(row) === 1 || rows.indexOf(row) === 2 ? "none" : null }
-                                            <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.username}  >
-                                                {columns.map((column) => {
-                                                    const value = row[column.id];
-                                                    return (
-                                                        <StyledTableCell key={column.id} align={column.align} onClick={() => { handleClickOpen(rows.indexOf(row)); }}>
-                                                            {column.id === 'avatar' ? <Avatar alt="Remy Sharp" src={value} /> : column.id === 'position' ? rows.indexOf(row) + 1 : column.id === 'username' ? <div style={{ display: "flex", alignItems: "center" }}><GitHubIcon style={{ marginRight: 20 }} /><a href={value[1]} style={{ textDecoration: "none", color: "black" }}>{value[0]}</a></div> : value}
-
-                                                        </StyledTableCell>
-                                                    );
-
-                                                })}
-                                            </StyledTableRow>
-                                        );
-                                    })}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-                    </Paper>
-                    <Dialog
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="alert-dialog-slide-title"
-                        aria-describedby="alert-dialog-slide-description"
-                    >
-                        <DialogTitle id="alert-dialog-slide-title">{login + "'s Stats"}</DialogTitle>
-                        <DialogContent>
-                            <DialogContentText id="alert-dialog-slide-description">
-                                <div style={{ display: "flex", alignItems: "center" }}>
-                                    <img alt="Remy Sharp" src={avatar} className={classes.leaderimg} />
-                                    <p className={classes.levelbadge} style={{ backgroundColor: "#ebfaeb", marginLeft: 20, fontSize: 25 }}>🏆 {score}</p>
-                                </div>
-                                <p style={{ "marginTop": 30 }}>List Of PRs: </p>
-                                {links}
-                            </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                            <button onClick={handleClose} color="primary" style={{ background: "#FA6329", border: "none", padding: 15, color: "white", borderRadius: 5, cursor: "pointer", marginRight: 10 }}>
-                                Close
-                            </button>
-                        </DialogActions>
-                    </Dialog>
-                </div>
-            </div >
-        </>
-    );
+        
+    )
 }
 
 export default Leaderboard;
