@@ -38,7 +38,7 @@
   "scripts": {
     "watch:css": "postcss src/app.css -o output.css",
     "start": "npm run watch:css & react-scripts start",
-    "build": "npm run build && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
