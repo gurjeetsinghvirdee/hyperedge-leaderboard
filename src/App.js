@@ -577,7 +577,7 @@ function Leaderboard() {
                         aria-label="Search"
                         aria-describedby="button-addon2"
                         onKeyUp={(e) => {
-                          e.key === "Enter" ? filterData() : "";
+                          e.key === "Enter" ? filterData() : "";   // have to fix this
                         }}
                       />
                       <span className="search-count dark:text-neutral-300">
