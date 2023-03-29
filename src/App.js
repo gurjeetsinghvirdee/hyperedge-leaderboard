@@ -236,7 +236,7 @@ function Leaderboard() {
               style={{
                 width: 100,
                 height: "auto",
-                marginLeft: 570,
+                margin: "auto",
                 marginTop: 30,
               }}
             />
