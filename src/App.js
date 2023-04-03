@@ -171,7 +171,7 @@ function Leaderboard() {
     )
       .then((res) => res.json())
       .then((data) => {
-        const updated = moment(data.updatedTimestring).format("LLL");
+        const updated = moment(data.updatedTimestring, "YYYY-MM-DDTHH:mm:ssZ").format("LLL");
         setLastupdated(updated);
         data.leaderboard.sort(function (a, b) {
           return (
