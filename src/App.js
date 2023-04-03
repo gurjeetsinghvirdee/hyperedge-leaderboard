@@ -19,8 +19,6 @@ import Backdrop from "@material-ui/core/Backdrop";
 import { Spinner } from "@chakra-ui/react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Confetti from "react-confetti";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMedal } from "@fortawesome/free-solid-svg-icons";
 
 const columns = [
   { id: "position", label: "Position", minWidth: 50, align: "center" },
