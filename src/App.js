@@ -167,7 +167,7 @@ function Leaderboard() {
   }
   useEffect(() => {
     fetch(
-      "http://localhost:8000/Leaderboard"
+      "https://hyperedgesoc23-backend-production.up.railway.app/Leaderboard"
     )
       .then((res) => res.json())
       .then((data) => {
