@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Particles from "./components/Particles";
+import moment from "moment";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -166,10 +167,12 @@ function Leaderboard() {
   }
   useEffect(() => {
     fetch(
-      "https://hyperedgesoc23-backend-production.up.railway.app/Leaderboard"
+      "http://localhost:8000/Leaderboard"
     )
       .then((res) => res.json())
       .then((data) => {
+        const updated = moment(data.updatedTimestring).format("LLL");
+        setLastupdated(updated);
         data.leaderboard.sort(function (a, b) {
           return (
             b.score - a.score ||
