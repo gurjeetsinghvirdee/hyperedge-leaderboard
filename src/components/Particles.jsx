@@ -43,7 +43,7 @@ function Particle() {
                 },
                 repulse: {
                     distance: 200,
-                    duration: 0.4,
+                    duration: 0.2,
                 },
             },
         },
@@ -53,9 +53,9 @@ function Particle() {
             },
             links: {
                 color: "#F87171",
-                distance: 120,
+                distance: 100,
                 enable: true,
-                opacity: 0.7,
+                opacity: 0.9,
                 width: 1,
             },
             collisions: {

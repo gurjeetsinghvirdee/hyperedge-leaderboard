@@ -19,6 +19,8 @@ import Backdrop from "@material-ui/core/Backdrop";
 import { Spinner } from "@chakra-ui/react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Confetti from "react-confetti";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMedal } from "@fortawesome/free-solid-svg-icons";
 
 const columns = [
   { id: "position", label: "Position", minWidth: 50, align: "center" },
@@ -253,7 +255,7 @@ function Leaderboard() {
                   speed="0.7s"
                   emptyColor="gray.200"
                   color="red.400"
-                  size="xl"
+                  size="xxl"
                 />
                 <span className="loading-msg dark:text-white">
                   {loadingMsg}
@@ -283,10 +285,15 @@ function Leaderboard() {
           </div>
         </div>
         <Backdrop className={classes.backdrop} open={openn}>
-          <CircularProgress color="inherit" />
+          <div class="card" style={{ width: "18rem", height: "8rem", textAlign: "center", backgroundColor: "#F95957", borderRadius: "15px"}}>
+            <CircularProgress color="inherit" style={{ marginTop: "1rem" }}/>
+            <div class="card-body">
+              <strong><h5 class="card-title">Server Updating... <br></br>Please wait Sometime</h5></strong>
+            </div>
+          </div>
         </Backdrop>
-        <div style={{}} className={classes.mainroot}>
-          <div
+        <div style={{ }} className={classes.mainroot}>
+          <div class="row"
             style={{
               marginBottom: 40,
               marginTop: 30,
@@ -296,29 +303,29 @@ function Leaderboard() {
             }}
             className={classes.leaders}
           >
-            <div>
+            <div class="col">
               <img
                 alt="avatar2"
                 src={rows[1] !== undefined ? rows[1].avatar : null}
                 className={classes.leaderimg}
               />
-              <h3>2. {rows[1] !== undefined ? rows[1].username[0] : null}</h3>
+              <h3 style={{ marginTop: 15, justifyContent: "center", display: "flex" }}> 2.{rows[1] !== undefined ? rows[1].username[0] : null}</h3>
             </div>
-            <div style={{ textAlign: "center" }}>
+            <div class="col" style={{ textAlign: "center" }}>
               <img
                 alt="avatar1"
                 src={rows[1] !== undefined ? rows[0].avatar : null}
                 className={classes.leaderimgbig}
               />
-              <h3>1. {rows[1] !== undefined ? rows[0].username[0] : null}</h3>
+              <h3 style={{ marginTop: 15, justifyContent: "center", display: "flex" }}>1.{rows[1] !== undefined ? rows[0].username[0] : null}</h3>
             </div>
-            <div>
+            <div class="col">
               <img
                 alt="avatar3"
                 src={rows[1] !== undefined ? rows[2].avatar : null}
                 className={classes.leaderimg}
               />
-              <h3>3. {rows[1] !== undefined ? rows[2].username[0] : null}</h3>
+              <h3 style={{ marginTop: 15, justifyContent: "center", display: "flex" }}>3.{rows[1] !== undefined ? rows[2].username[0] : null}</h3>
             </div>
           </div>
 
